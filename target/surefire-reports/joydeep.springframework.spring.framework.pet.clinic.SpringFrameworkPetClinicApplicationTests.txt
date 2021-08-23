@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: joydeep.springframework.spring.framework.pet.clinic.SpringFrameworkPetClinicApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 11.354 s - in joydeep.springframework.spring.framework.pet.clinic.SpringFrameworkPetClinicApplicationTests
