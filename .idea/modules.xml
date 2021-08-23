@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/spring-framework-pet-clinic.iml" filepath="$PROJECT_DIR$/.idea/spring-framework-pet-clinic.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-framework-pet-clinic-data/spring-framework-pet-clinic-data.iml" filepath="$PROJECT_DIR$/spring-framework-pet-clinic-data/spring-framework-pet-clinic-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-framework-pet-clinic-web/spring-framework-pet-clinic-web.iml" filepath="$PROJECT_DIR$/spring-framework-pet-clinic-web/spring-framework-pet-clinic-web.iml" />
     </modules>
   </component>
 </project>
