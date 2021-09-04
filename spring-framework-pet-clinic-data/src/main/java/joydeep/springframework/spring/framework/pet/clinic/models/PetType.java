@@ -1,6 +1,8 @@
 package joydeep.springframework.spring.framework.pet.clinic.models;
 
-public class PetType {
+import com.fasterxml.jackson.databind.ser.Serializers.Base;
+
+public class PetType extends BaseEntity {
     private String name;
 
     public String getName() {
