@@ -1,4 +1,4 @@
-package joydeep.springframework.spring.framework.pet.clinic.models.bootstrap;
+package joydeep.springframework.spring.framework.pet.clinic.bootstrap;
 
 import joydeep.springframework.spring.framework.pet.clinic.models.Owner;
 import joydeep.springframework.spring.framework.pet.clinic.models.Vet;
@@ -7,8 +7,9 @@ import joydeep.springframework.spring.framework.pet.clinic.services.VetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Service;
 
-
+@Service
 public class DataLoader implements CommandLineRunner {
 
     private final Logger logger= LoggerFactory.getLogger(DataLoader.class);
