@@ -1,11 +1,11 @@
 package joydeep.springframework.spring.framework.pet.clinic.services.map;
 
 import joydeep.springframework.spring.framework.pet.clinic.models.Pet;
-import joydeep.springframework.spring.framework.pet.clinic.services.CrudRepository;
+import joydeep.springframework.spring.framework.pet.clinic.services.PetService;
 
 import java.util.Set;
 
-public class PetMapService extends AbstractMapService<Pet, Long> implements CrudRepository<Pet, Long> {
+public class PetMapService extends AbstractMapService<Pet, Long> implements PetService {
 
 
     @Override

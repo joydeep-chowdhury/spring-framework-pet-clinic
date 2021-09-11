@@ -1,11 +1,13 @@
 package joydeep.springframework.spring.framework.pet.clinic.services.map;
 
 import joydeep.springframework.spring.framework.pet.clinic.models.Owner;
-import joydeep.springframework.spring.framework.pet.clinic.services.CrudRepository;
+import joydeep.springframework.spring.framework.pet.clinic.services.OwnerService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
-public class OwnerMapService extends AbstractMapService<Owner, Long> implements CrudRepository<Owner, Long> {
+
+public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
 
     @Override
@@ -31,5 +33,10 @@ public class OwnerMapService extends AbstractMapService<Owner, Long> implements 
     @Override
     public void delete(Owner entity) {
         super.delete(entity);
+    }
+
+    @Override
+    public Owner findByLastName(String lastName) {
+        return map.values().stream().filter(owner -> owner.getLastName().equals(lastName)).findFirst().get();
     }
 }
