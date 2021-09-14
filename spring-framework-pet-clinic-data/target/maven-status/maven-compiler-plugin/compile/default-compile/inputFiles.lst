@@ -1,5 +1,14 @@
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/map/PetMapService.java
 /Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/models/Person.java
-/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/models/PetType.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/map/OwnerMapService.java
 /Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/models/Pet.java
 /Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/models/Vet.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/VetService.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/map/AbstractMapService.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/models/BaseEntity.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/PetService.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/OwnerService.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/map/VetMapService.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/services/CrudRepository.java
+/Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/models/PetType.java
 /Users/jochowdh/spring-framework-pet-clinic/spring-framework-pet-clinic-data/src/main/java/joydeep/springframework/spring/framework/pet/clinic/models/Owner.java

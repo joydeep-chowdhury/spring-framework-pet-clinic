@@ -1,5 +1,14 @@
 joydeep/springframework/spring/framework/pet/clinic/models/Pet.class
 joydeep/springframework/spring/framework/pet/clinic/models/Person.class
-joydeep/springframework/spring/framework/pet/clinic/models/Vet.class
-joydeep/springframework/spring/framework/pet/clinic/models/PetType.class
+joydeep/springframework/spring/framework/pet/clinic/services/OwnerService.class
+joydeep/springframework/spring/framework/pet/clinic/services/PetService.class
+joydeep/springframework/spring/framework/pet/clinic/services/VetService.class
+joydeep/springframework/spring/framework/pet/clinic/services/map/VetMapService.class
+joydeep/springframework/spring/framework/pet/clinic/models/BaseEntity.class
+joydeep/springframework/spring/framework/pet/clinic/services/map/OwnerMapService.class
+joydeep/springframework/spring/framework/pet/clinic/services/map/PetMapService.class
 joydeep/springframework/spring/framework/pet/clinic/models/Owner.class
+joydeep/springframework/spring/framework/pet/clinic/models/Vet.class
+joydeep/springframework/spring/framework/pet/clinic/services/CrudRepository.class
+joydeep/springframework/spring/framework/pet/clinic/services/map/AbstractMapService.class
+joydeep/springframework/spring/framework/pet/clinic/models/PetType.class
