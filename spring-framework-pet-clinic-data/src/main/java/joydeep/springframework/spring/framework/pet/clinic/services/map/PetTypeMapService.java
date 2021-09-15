@@ -2,9 +2,11 @@ package joydeep.springframework.spring.framework.pet.clinic.services.map;
 
 import joydeep.springframework.spring.framework.pet.clinic.models.PetType;
 import joydeep.springframework.spring.framework.pet.clinic.services.PetTypeService;
+import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@Service
 public class PetTypeMapService extends AbstractMapService<PetType, Long> implements PetTypeService {
     @Override
     public PetType save(PetType entity) {
