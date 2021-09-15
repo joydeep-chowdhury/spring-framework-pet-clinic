@@ -1,6 +1,7 @@
 package joydeep.springframework.spring.framework.pet.clinic.bootstrap;
 
 import joydeep.springframework.spring.framework.pet.clinic.models.Owner;
+import joydeep.springframework.spring.framework.pet.clinic.models.Pet;
 import joydeep.springframework.spring.framework.pet.clinic.models.PetType;
 import joydeep.springframework.spring.framework.pet.clinic.models.Vet;
 import joydeep.springframework.spring.framework.pet.clinic.services.OwnerService;
@@ -10,6 +11,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 @Service
 public class DataLoader implements CommandLineRunner {
@@ -39,10 +42,30 @@ public class DataLoader implements CommandLineRunner {
         Owner owner1 = new Owner();
         owner1.setFirstName("Joydeep");
         owner1.setLastName("Chowdhury");
+        owner1.setAddress("House No 14 781018");
+        owner1.setCity("Guwahati");
+        owner1.setTelephone("8099618378");
+
+        Pet owner1Dog= new Pet();
+        owner1Dog.setOwner(owner1);
+        owner1Dog.setPetType(savedDogPetType);
+        owner1Dog.setName("Rocky");
+        owner1Dog.setBirthDate(LocalDate.now());
+        owner1.getPets().add(owner1Dog);
 
         Owner owner2 = new Owner();
         owner2.setFirstName("Dr Indraneel");
         owner2.setLastName("Mukherjee");
+        owner2.setAddress("Ganesh Patthar");
+        owner2.setCity("Guwahati");
+        owner2.setTelephone("7002439575");
+
+        Pet owner2Cat= new Pet();
+        owner2Cat.setOwner(owner2);
+        owner2Cat.setPetType(savedCatPetType);
+        owner2Cat.setName("Kitty");
+        owner2Cat.setBirthDate(LocalDate.now());
+        owner2.getPets().add(owner2Cat);
 
         ownerService.save(owner1);
         ownerService.save(owner2);
