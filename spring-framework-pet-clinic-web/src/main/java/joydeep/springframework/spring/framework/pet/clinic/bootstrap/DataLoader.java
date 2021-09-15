@@ -3,9 +3,11 @@ package joydeep.springframework.spring.framework.pet.clinic.bootstrap;
 import joydeep.springframework.spring.framework.pet.clinic.models.Owner;
 import joydeep.springframework.spring.framework.pet.clinic.models.Pet;
 import joydeep.springframework.spring.framework.pet.clinic.models.PetType;
+import joydeep.springframework.spring.framework.pet.clinic.models.Speciality;
 import joydeep.springframework.spring.framework.pet.clinic.models.Vet;
 import joydeep.springframework.spring.framework.pet.clinic.services.OwnerService;
 import joydeep.springframework.spring.framework.pet.clinic.services.PetTypeService;
+import joydeep.springframework.spring.framework.pet.clinic.services.SpecialitiesService;
 import joydeep.springframework.spring.framework.pet.clinic.services.VetService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,27 +19,49 @@ import java.time.LocalDate;
 @Service
 public class DataLoader implements CommandLineRunner {
 
-    private final Logger logger= LoggerFactory.getLogger(DataLoader.class);
+    private final Logger logger = LoggerFactory.getLogger(DataLoader.class);
 
     private final OwnerService ownerService;
     private final VetService vetService;
     private final PetTypeService petTypeService;
+    private final SpecialitiesService specialitiesService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
+        this.specialitiesService = specialitiesService;
     }
 
     @Override
     public void run(String... args) throws Exception {
-        PetType dog= new PetType();
+        if(petTypeService.findAll().isEmpty()){
+            loadData();
+        }
+
+
+    }
+
+    private void loadData() {
+        PetType dog = new PetType();
         dog.setName("Dog");
         PetType savedDogPetType = petTypeService.save(dog);
 
-        PetType cat= new PetType();
+        PetType cat = new PetType();
         cat.setName("Cat");
         PetType savedCatPetType = petTypeService.save(cat);
+
+        Speciality radiology = new Speciality();
+        radiology.setDescription("Radiology");
+        Speciality savedRadiology = specialitiesService.save(radiology);
+
+        Speciality dentistry = new Speciality();
+        dentistry.setDescription("Dentistry");
+        Speciality savedDentistry = specialitiesService.save(dentistry);
+
+        Speciality surgery = new Speciality();
+        surgery.setDescription("Surgery");
+        Speciality savedSurgery = specialitiesService.save(surgery);
 
         Owner owner1 = new Owner();
         owner1.setFirstName("Joydeep");
@@ -46,7 +70,7 @@ public class DataLoader implements CommandLineRunner {
         owner1.setCity("Guwahati");
         owner1.setTelephone("8099618378");
 
-        Pet owner1Dog= new Pet();
+        Pet owner1Dog = new Pet();
         owner1Dog.setOwner(owner1);
         owner1Dog.setPetType(savedDogPetType);
         owner1Dog.setName("Rocky");
@@ -60,7 +84,7 @@ public class DataLoader implements CommandLineRunner {
         owner2.setCity("Guwahati");
         owner2.setTelephone("7002439575");
 
-        Pet owner2Cat= new Pet();
+        Pet owner2Cat = new Pet();
         owner2Cat.setOwner(owner2);
         owner2Cat.setPetType(savedCatPetType);
         owner2Cat.setName("Kitty");
@@ -75,15 +99,16 @@ public class DataLoader implements CommandLineRunner {
         Vet vet1 = new Vet();
         vet1.setFirstName("Indraprasta Kumar");
         vet1.setLastName("Mukherjee");
+        vet1.getSpecialities().add(savedDentistry);
 
         Vet vet2 = new Vet();
         vet2.setFirstName("Rohan Kumar");
         vet2.setLastName("Bhadury");
+        vet2.getSpecialities().add(savedRadiology);
+        vet2.getSpecialities().add(savedSurgery);
 
         vetService.save(vet1);
         vetService.save(vet2);
         logger.info("Loaded vets");
-
-
     }
 }
