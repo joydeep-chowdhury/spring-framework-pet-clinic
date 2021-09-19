@@ -36,7 +36,7 @@ public class OwnerJpaService implements OwnerService {
     @Override
     public Owner findByIdentity(Long identity) {
         return Optional.ofNullable(ownerRepository.findByIdentity(identity)).orElseThrow(() -> {
-            throw new RuntimeException("LastName not found");
+            throw new RuntimeException("Identity Not Found");
         });
     }
 
