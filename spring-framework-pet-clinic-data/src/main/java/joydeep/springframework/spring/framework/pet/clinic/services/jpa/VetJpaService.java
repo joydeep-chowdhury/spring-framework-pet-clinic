@@ -25,7 +25,7 @@ public class VetJpaService implements VetService {
 
     @Override
     public Vet save(Vet entity) {
-        vetRepository.save(entity);
+        return vetRepository.save(entity);
     }
 
     @Override
