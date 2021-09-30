@@ -5,10 +5,12 @@ import joydeep.springframework.spring.framework.pet.clinic.models.Pet;
 import joydeep.springframework.spring.framework.pet.clinic.models.PetType;
 import joydeep.springframework.spring.framework.pet.clinic.models.Speciality;
 import joydeep.springframework.spring.framework.pet.clinic.models.Vet;
+import joydeep.springframework.spring.framework.pet.clinic.models.Visit;
 import joydeep.springframework.spring.framework.pet.clinic.services.OwnerService;
 import joydeep.springframework.spring.framework.pet.clinic.services.PetTypeService;
 import joydeep.springframework.spring.framework.pet.clinic.services.SpecialitiesService;
 import joydeep.springframework.spring.framework.pet.clinic.services.VetService;
+import joydeep.springframework.spring.framework.pet.clinic.services.VisitService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -25,12 +27,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialitiesService specialitiesService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialitiesService specialitiesService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialitiesService = specialitiesService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -91,9 +95,20 @@ public class DataLoader implements CommandLineRunner {
         owner2Cat.setBirthDate(LocalDate.now());
         owner2.getPets().add(owner2Cat);
 
+        Visit owner2CatVisit = new Visit();
+        owner2CatVisit.setPet(owner2Cat);
+        owner2CatVisit.setDate(LocalDate.now());
+        owner2CatVisit.setDescription("Owner 2 cat visit");
+
+
+
+
         ownerService.save(owner1);
         ownerService.save(owner2);
         logger.info("Loaded owners");
+
+        visitService.save(owner2CatVisit);
+        logger.info("Saved visit");
 
 
         Vet vet1 = new Vet();
