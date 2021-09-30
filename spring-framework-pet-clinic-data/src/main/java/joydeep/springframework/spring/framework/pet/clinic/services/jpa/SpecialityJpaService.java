@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Profile("jpa")
@@ -27,14 +29,16 @@ public class SpecialityJpaService implements SpecialitiesService {
 
     @Override
     public Speciality findByIdentity(Long identity) {
-        return Optional.ofNullable(specialityRepository.findByIdentity(identity)).orElseThrow(()->{
+        return specialityRepository.findById(identity).orElseThrow(()->{
             throw new RuntimeException("Speciality with provided id not found");
         });
     }
 
     @Override
     public Set<Speciality> findAll() {
-        return specialityRepository.findAll();
+        return StreamSupport
+                .stream(specialityRepository.findAll().spliterator(), false)
+                .collect(Collectors.toSet());
     }
 
     @Override
@@ -44,6 +48,6 @@ public class SpecialityJpaService implements SpecialitiesService {
 
     @Override
     public void deleteByIdentity(Long identity) {
-       specialityRepository.deleteByIdentity(identity);
+       specialityRepository.deleteById(identity);
     }
 }

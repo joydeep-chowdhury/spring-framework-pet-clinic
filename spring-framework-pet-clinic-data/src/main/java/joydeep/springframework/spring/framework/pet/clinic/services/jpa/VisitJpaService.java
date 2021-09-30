@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Profile("jpa")
@@ -26,14 +28,18 @@ public class VisitJpaService implements VisitService {
 
     @Override
     public Visit findByIdentity(Long identity) {
-        return Optional.ofNullable(visitRepository.findByIdentity(identity)).orElseThrow(() -> {
+        Optional<Visit> optionalVisit = visitRepository.findById(identity);
+
+        return optionalVisit.orElseThrow(() -> {
             throw new RuntimeException("Visits cannot be retrieved by identity");
         });
     }
 
     @Override
     public Set<Visit> findAll() {
-        return visitRepository.findAll();
+        return StreamSupport
+                .stream(visitRepository.findAll().spliterator(), false)
+                .collect(Collectors.toSet());
     }
 
     @Override
@@ -43,6 +49,6 @@ public class VisitJpaService implements VisitService {
 
     @Override
     public void deleteByIdentity(Long identity) {
-        visitRepository.deleteByIdentity(identity);
+        visitRepository.deleteById(identity);
     }
 }

@@ -4,11 +4,13 @@ import joydeep.springframework.spring.framework.pet.clinic.models.Owner;
 import joydeep.springframework.spring.framework.pet.clinic.models.Pet;
 import joydeep.springframework.spring.framework.pet.clinic.services.OwnerService;
 import joydeep.springframework.spring.framework.pet.clinic.services.PetService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
+@Profile({"default","map"})
 public class OwnerMapService extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeMapService petTypeMapService;

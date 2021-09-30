@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Profile("jpa")
@@ -35,14 +37,16 @@ public class OwnerJpaService implements OwnerService {
 
     @Override
     public Owner findByIdentity(Long identity) {
-        return Optional.ofNullable(ownerRepository.findByIdentity(identity)).orElseThrow(() -> {
+        return ownerRepository.findById(identity).orElseThrow(() -> {
             throw new RuntimeException("Identity Not Found");
         });
     }
 
     @Override
     public Set<Owner> findAll() {
-        return ownerRepository.findAll();
+        return StreamSupport
+                .stream(ownerRepository.findAll().spliterator(), false)
+                .collect(Collectors.toSet());
     }
 
     @Override
@@ -52,7 +56,7 @@ public class OwnerJpaService implements OwnerService {
 
     @Override
     public void deleteByIdentity(Long identity) {
-       ownerRepository.deleteByIdentity(identity);
+       ownerRepository.deleteById(identity);
     }
 
     @Override

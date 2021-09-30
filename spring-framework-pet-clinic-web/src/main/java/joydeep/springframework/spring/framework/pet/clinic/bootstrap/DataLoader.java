@@ -101,8 +101,6 @@ public class DataLoader implements CommandLineRunner {
         owner2CatVisit.setDescription("Owner 2 cat visit");
 
 
-
-
         ownerService.save(owner1);
         ownerService.save(owner2);
         logger.info("Loaded owners");

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 @Service
 @Profile("jpa")
@@ -26,14 +28,16 @@ public class PetJpaService implements PetService {
 
     @Override
     public Pet findByIdentity(Long identity) {
-        return Optional.ofNullable(petRepository.findByIdentity(identity)).orElseThrow(()->{
+        return petRepository.findById(identity).orElseThrow(()->{
             throw new RuntimeException("Pet with identity not found");
         });
     }
 
     @Override
     public Set<Pet> findAll() {
-        return petRepository.findAll();
+        return StreamSupport
+                .stream(petRepository.findAll().spliterator(), false)
+                .collect(Collectors.toSet());
     }
 
     @Override
@@ -43,6 +47,6 @@ public class PetJpaService implements PetService {
 
     @Override
     public void deleteByIdentity(Long identity) {
-       petRepository.deleteByIdentity(identity);
+       petRepository.deleteById(identity);
     }
 }
