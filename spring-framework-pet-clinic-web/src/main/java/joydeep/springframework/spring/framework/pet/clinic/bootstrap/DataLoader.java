@@ -17,6 +17,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 
 @Service
 public class DataLoader implements CommandLineRunner {
@@ -67,12 +68,8 @@ public class DataLoader implements CommandLineRunner {
         surgery.setDescription("Surgery");
         Speciality savedSurgery = specialitiesService.save(surgery);
 
-        Owner owner1 = new Owner();
-        owner1.setFirstName("Joydeep");
-        owner1.setLastName("Chowdhury");
-        owner1.setAddress("House No 14 781018");
-        owner1.setCity("Guwahati");
-        owner1.setTelephone("8099618378");
+        Owner owner1 = Owner.builder().firstname("Joydeep").lastName("Chowdhury").address("House No 14 781018")
+                            .city("Guwahati").telephone("8099618378").pets(new HashSet<>()).build();
 
         Pet owner1Dog = new Pet();
         owner1Dog.setOwner(owner1);
@@ -81,12 +78,8 @@ public class DataLoader implements CommandLineRunner {
         owner1Dog.setBirthDate(LocalDate.now());
         owner1.getPets().add(owner1Dog);
 
-        Owner owner2 = new Owner();
-        owner2.setFirstName("Dr Indraneel");
-        owner2.setLastName("Mukherjee");
-        owner2.setAddress("Ganesh Patthar");
-        owner2.setCity("Guwahati");
-        owner2.setTelephone("7002439575");
+        Owner owner2 = Owner.builder().firstname("Dr Indraneel").lastName("Mukherjee").address("Ganesh Patthar")
+                .city("Guwahati").telephone("7002439575").pets(new HashSet<>()).build();
 
         Pet owner2Cat = new Pet();
         owner2Cat.setOwner(owner2);
@@ -109,14 +102,10 @@ public class DataLoader implements CommandLineRunner {
         logger.info("Saved visit");
 
 
-        Vet vet1 = new Vet();
-        vet1.setFirstName("Indraprasta Kumar");
-        vet1.setLastName("Mukherjee");
+        Vet vet1 = Vet.builder().firstName("Indraprasta Kumar").lastName("Mukherjee").build();
         vet1.getSpecialities().add(savedDentistry);
 
-        Vet vet2 = new Vet();
-        vet2.setFirstName("Rohan Kumar");
-        vet2.setLastName("Bhadury");
+        Vet vet2 = Vet.builder().firstName("Rohan Kumar").lastName("Bhadury").build();
         vet2.getSpecialities().add(savedRadiology);
         vet2.getSpecialities().add(savedSurgery);
 
